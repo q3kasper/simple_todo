@@ -5,9 +5,7 @@ import net.guides.springboot.todomanagement.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class TodoService implements ITodoService {
@@ -17,7 +15,10 @@ public class TodoService implements ITodoService {
 
 	@Override
 	public List<Todo> getAllTodos() {
-		return todoRepository.findAll();
+		List<Todo> todoList = new ArrayList<>();
+		Iterator<Todo> iterator = todoRepository.findAll().iterator();
+		iterator.forEachRemaining(todoList::add);
+		return todoList;
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package net.guides.springboot.todomanagement.repository;
 
 import net.guides.springboot.todomanagement.model.Todo;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface TodoRepository extends JpaRepository<Todo, Long>{
+public interface TodoRepository extends CrudRepository<Todo, Long> {
 }
