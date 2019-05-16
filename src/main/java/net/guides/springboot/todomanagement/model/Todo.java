@@ -1,13 +1,8 @@
 package net.guides.springboot.todomanagement.model;
 
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Entity
 @Table(name = "todos")
@@ -17,9 +12,7 @@ public class Todo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	private String userName;
-
-	@Size(min = 10, message = "Enter at least 10 Characters...")
+	@Size(min = 5, message = "Enter at least 10 Characters...")
 	private String description;
 
 	private Date targetDate;
@@ -28,9 +21,9 @@ public class Todo {
 		super();
 	}
 
-	public Todo(String user, String desc, Date targetDate, boolean isDone) {
+	public Todo(String desc, Date targetDate) {
 		super();
-		this.userName = user;
+
 		this.description = desc;
 		this.targetDate = targetDate;
 	}
@@ -41,14 +34,6 @@ public class Todo {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 
 	public String getDescription() {
